@@ -32,6 +32,7 @@ object build extends Build {
     scalacOptions ++= Seq("-Xlint"),
     cleanFiles ++= Seq(file("logs")),
     javaOptions ++= originalJvmOptions,
+    licenses := Seq("MIT" -> url("http://opensource.org/licenses/MIT")),
     watchSources ~= { _.filterNot(f =>
       f.getName.endsWith(".swp") || f.getName.endsWith(".swo") || f.isDirectory
     )},
