@@ -22,7 +22,7 @@ object build extends Build {
   val scalaz = Seq(
     "core","concurrent","effect","example","iteratee","iterv","scalacheck-binding","tests","typelevel"
   ).map{ m =>
-    "org.scalaz" %% ("scalaz-" + m) % "7.0.0-M7"
+    "org.scalaz" %% ("scalaz-" + m) % "7.0.0-M8"
   }
 
   val main = play.Project(
