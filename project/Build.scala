@@ -2,13 +2,9 @@ import sbt._,Keys._
 
 object build extends Build {
 
-  val originalJvmOptions = {
-    import scala.collection.JavaConverters._
-    val args = Seq("-Xmx","-Xms")
-    management.ManagementFactory.getRuntimeMXBean().getInputArguments().asScala.filter(
-      a => args.exists(a.startsWith) || a.startsWith("-XX")
-    ).toList
-  }
+  val originalJvmOptions = sys.process.javaVmArguments.filter(
+    a => Seq("-Xmx","-Xms").exists(a.startsWith) || a.startsWith("-XX")
+  )
 
   val lift = Seq(
     "common","json","actor","util","json-scalaz","json-ext"
