@@ -8,7 +8,7 @@ object build extends Build {
 
   val lift = Seq(
     "common","json","actor","util","json-scalaz","json-ext"
-  ).map{n => "net.liftweb" %% ("lift-" + n ) % "2.5-M4"}
+  ).map{n => "net.liftweb" %% ("lift-" + n ) % "2.5-RC2"}
 
   val unfiltered = Seq(
     "filter","filter-async","agents","uploads","util","jetty","jetty-ajp","netty-server",
@@ -18,13 +18,15 @@ object build extends Build {
   val scalaz = Seq(
     "core","concurrent","effect","example","iteratee","iterv","scalacheck-binding","tests","typelevel"
   ).map{ m =>
-    "org.scalaz" %% ("scalaz-" + m) % "7.0.0-M8"
+    "org.scalaz" %% ("scalaz-" + m) % "7.0.0-M9"
   }
+
+  val spire = Seq("spire", "spire-scalacheck-binding").map("org.spire-math" %% _ % "0.4.0-M2")
 
   val main = play.Project(
     "heroku-class-diagrams", "0.1-SNAPSHOT", Nil
   ).settings(
-    scalaVersion := "2.10.1-RC1",
+    scalaVersion := "2.10.1",
     scalacOptions ++= Seq("-Xlint"),
     cleanFiles ++= Seq(file("logs")),
     javaOptions ++= originalJvmOptions,
@@ -32,12 +34,11 @@ object build extends Build {
     watchSources ~= { _.filterNot(f =>
       f.getName.endsWith(".swp") || f.getName.endsWith(".swo") || f.isDirectory
     )},
-    resolvers += Opts.resolver.sonatypeReleases,
+//    resolvers += Opts.resolver.sonatypeReleases,
     libraryDependencies <+= sbtDependency,
     libraryDependencies ++= Seq(
-      "org.spire-math" %% "spire" % "0.3.0",
       "org.squeryl" %% "squeryl" % "0.9.5-6",
-      "postgresql" % "postgresql" % "9.1-901-1.jdbc4",
+      "postgresql" % "postgresql" % "9.1-903.jdbc4" from "http://jdbc.postgresql.org/download/postgresql-9.1-903.jdbc4.jar",
       "mysql" % "mysql-connector-java" % "5.1.23",
       "net.sf.barcode4j" % "barcode4j" % "2.1",
       "org.fusesource.scalate" %% "scalate-core" % "1.6.1",
@@ -48,8 +49,8 @@ object build extends Build {
       "com.typesafe" %% "play-plugins-mailer" % "2.1.0",
       "com.github.nscala-time" %% "nscala-time" % "0.2.0",
       "org.scalaj" %% "scalaj-http" % "0.3.6",
-      "org.mongodb" %% "casbah-core" % "2.5.0"
-    ) ++ scalaz ++ unfiltered ++ lift,
+      "org.mongodb" %% "casbah-core" % "2.5.1"
+    ) ++ scalaz ++ unfiltered ++ lift ++ spire,
     libraryDependencies ~= {_.map(_.copy(configurations = Some("compile")))}
   )
 
