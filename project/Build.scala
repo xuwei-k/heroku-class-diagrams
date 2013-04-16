@@ -18,7 +18,7 @@ object build extends Build {
   val scalaz = Seq(
     "core","concurrent","effect","iteratee","iterv","scalacheck-binding","typelevel"
   ).map{ m =>
-    "org.scalaz" %% ("scalaz-" + m) % "7.0.0-RC1"
+    "org.scalaz" %% ("scalaz-" + m) % "7.0.0-RC2"
   }
 
   val spire = Seq("spire", "spire-scalacheck-binding").map("org.spire-math" %% _ % "0.4.0-M4")
@@ -37,6 +37,7 @@ object build extends Build {
     resolvers += Opts.resolver.sonatypeReleases,
 //    libraryDependencies <+= sbtDependency,
     libraryDependencies ++= Seq(
+      "com.chuusai" %% "shapeless" % "1.2.4",
       "com.github.seratch" %% "scalikejdbc-interpolation" % "1.5.2",
       "org.squeryl" %% "squeryl" % "0.9.5-6",
       "postgresql" % "postgresql" % "9.1-903.jdbc4" from "http://jdbc.postgresql.org/download/postgresql-9.1-903.jdbc4.jar",
