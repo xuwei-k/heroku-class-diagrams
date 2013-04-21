@@ -18,7 +18,7 @@ object build extends Build {
   val scalaz = Seq(
     "core","concurrent","effect","iteratee","iterv","scalacheck-binding","typelevel"
   ).map{ m =>
-    "org.scalaz" %% ("scalaz-" + m) % "7.0.0-RC2"
+    "org.scalaz" %% ("scalaz-" + m) % "7.0.0"
   }
 
   val spire = Seq("spire", "spire-scalacheck-binding").map("org.spire-math" %% _ % "0.4.0-M4")
