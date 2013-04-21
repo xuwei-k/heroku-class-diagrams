@@ -38,11 +38,16 @@ object Front {
 
   val STYLE = """ a.""" + SVG_LINK + """{ margin-left:30px; } """
 
+  private[this] final val bootstrapVersion = "2.3.1"
+
   def template(body:Elem,title:String):Elem = {
 <html lang="en">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <meta name="robots" content="noindex,nofollow" />
+    <script src="http://http://code.jquery.com/jquery-2.0.0.min.js"></script>
+    <script src={"http://netdna.bootstrapcdn.com/twitter-bootstrap/" + bootstrapVersion + "/js/bootstrap.min.js"}></script>
+    <link href={"http://netdna.bootstrapcdn.com/twitter-bootstrap/" + bootstrapVersion + "/css/bootstrap-combined.min.css"} rel="stylesheet" />
     <title>{title}</title>
     <link rel="shortcut icon" href="./favicon.ico" />
     <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
