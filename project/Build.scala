@@ -8,7 +8,7 @@ object build extends Build {
 
   val lift = Seq(
     "common","json","actor","util","json-scalaz","json-ext"
-  ).map{n => "net.liftweb" %% ("lift-" + n ) % "2.5-RC2"}
+  ).map{n => "net.liftweb" %% ("lift-" + n ) % "2.5-RC4"}
 
   val unfiltered = Seq(
     "filter","filter-async","agents","uploads","util","jetty","jetty-ajp","netty-server",
@@ -38,8 +38,8 @@ object build extends Build {
 //    libraryDependencies <+= sbtDependency,
     libraryDependencies ++= Seq(
       "com.chuusai" %% "shapeless" % "1.2.4",
-      "com.github.seratch" %% "scalikejdbc-interpolation" % "1.5.2",
-      "org.squeryl" %% "squeryl" % "0.9.5-6",
+      "com.github.seratch" %% "scalikejdbc-interpolation" % "1.5.4",
+      "org.squeryl" %% "squeryl" % "0.9.6-RC1",
       "postgresql" % "postgresql" % "9.1-903.jdbc4" from "http://jdbc.postgresql.org/download/postgresql-9.1-903.jdbc4.jar",
       "mysql" % "mysql-connector-java" % "5.1.24",
       "net.sf.barcode4j" % "barcode4j" % "2.1",
@@ -50,8 +50,8 @@ object build extends Build {
       "jmagick" % "jmagick" % "6.2.4",
       "com.typesafe" %% "play-plugins-mailer" % "2.1.0",
       "com.github.nscala-time" %% "nscala-time" % "0.2.0",
-      "org.scalaj" %% "scalaj-http" % "0.3.6",
-      "org.mongodb" %% "casbah-core" % "2.5.1"
+      "org.scalaj" %% "scalaj-http" % "0.3.7",
+      "org.mongodb" %% "casbah-core" % "2.6.0"
     ) ++ scalaz ++ unfiltered ++ lift ++ spire,
     libraryDependencies ~= {_.map(_.copy(configurations = Some("compile")))},
     libraryDependencies ~= {_.map(_.exclude("org.eclipse.jetty.orbit", "javax.servlet"))}
