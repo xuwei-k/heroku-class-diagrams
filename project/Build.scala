@@ -8,7 +8,7 @@ object build extends Build {
 
   val lift = Seq(
     "common","json","actor","util","json-scalaz","json-ext"
-  ).map{n => "net.liftweb" %% ("lift-" + n ) % "2.5-RC4"}
+  ).map{n => "net.liftweb" %% ("lift-" + n ) % "2.5-RC6"}
 
   val unfiltered = Seq(
     "filter","filter-async","agents","uploads","util","jetty","jetty-ajp","netty-server",
@@ -21,7 +21,7 @@ object build extends Build {
     "org.scalaz" %% ("scalaz-" + m) % "7.0.0"
   }
 
-  val spire = Seq("spire", "spire-scalacheck-binding").map("org.spire-math" %% _ % "0.4.0-M4")
+  val spire = Seq("spire", "spire-scalacheck-binding").map("org.spire-math" %% _ % "0.4.0")
 
   val main = play.Project(
     "heroku-class-diagrams", "0.1-SNAPSHOT", Nil
@@ -38,7 +38,7 @@ object build extends Build {
 //    libraryDependencies <+= sbtDependency,
     libraryDependencies ++= Seq(
       "com.chuusai" %% "shapeless" % "1.2.4",
-      "com.github.seratch" %% "scalikejdbc-interpolation" % "1.5.4",
+      "com.github.seratch" %% "scalikejdbc-interpolation" % "1.6.0",
       "org.squeryl" %% "squeryl" % "0.9.6-RC1",
       "postgresql" % "postgresql" % "9.1-903.jdbc4" from "http://jdbc.postgresql.org/download/postgresql-9.1-903.jdbc4.jar",
       "mysql" % "mysql-connector-java" % "5.1.24",
