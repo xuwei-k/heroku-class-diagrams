@@ -41,10 +41,10 @@ object build extends Build {
       Project.extract(state).currentRef.project + branch + " > "
     },
     resolvers += Opts.resolver.sonatypeReleases,
-//    libraryDependencies <+= sbtDependency,
+    libraryDependencies += "org.scala-sbt" % "sbt" % "0.13.0-M2",
     libraryDependencies ++= Seq(
       "com.chuusai" %% "shapeless" % "1.2.4",
-      "com.github.seratch" %% "scalikejdbc-interpolation" % "1.6.0",
+      "com.github.seratch" %% "scalikejdbc-interpolation" % "1.6.1",
       "org.squeryl" %% "squeryl" % "0.9.6-RC1",
       "postgresql" % "postgresql" % "9.1-903.jdbc4" from "http://jdbc.postgresql.org/download/postgresql-9.1-903.jdbc4.jar",
       "mysql" % "mysql-connector-java" % "5.1.24",
