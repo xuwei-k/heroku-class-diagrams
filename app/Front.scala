@@ -45,7 +45,7 @@ object Front {
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <meta name="robots" content="noindex,nofollow" />
-    <script src="http://http://code.jquery.com/jquery-2.0.0.min.js"></script>
+    <script src="http://code.jquery.com/jquery-2.0.2.min.js"></script>
     <script src={"http://netdna.bootstrapcdn.com/twitter-bootstrap/" + bootstrapVersion + "/js/bootstrap.min.js"}></script>
     <link href={"http://netdna.bootstrapcdn.com/twitter-bootstrap/" + bootstrapVersion + "/css/bootstrap-combined.min.css"} rel="stylesheet" />
     <title>{title}</title>
