@@ -1,7 +1,7 @@
 package test
 
 import org.specs2.mutable._
-
+import org.openqa.selenium.chrome.ChromeDriver
 import play.api.test._
 import play.api.test.Helpers._
 
@@ -9,7 +9,7 @@ class IntegrationSpec extends Specification {
 
   "Application" should {
 
-    "work from within a browser" in new WithBrowser(){
+    "work from within a browser" in new WithBrowser(webDriver = classOf[ChromeDriver]){
 
       browser.goTo("/")
 
