@@ -3,12 +3,12 @@ import sbt._,Keys._
 object build extends Build {
 
   val originalJvmOptions = sys.process.javaVmArguments.filter(
-    a => Seq("-Xmx","-Xms").exists(a.startsWith) || a.startsWith("-XX")
+    a => Seq("-Xmx", "-Xms", "-XX").exists(a.startsWith)
   )
 
   val lift = Seq(
     "common","json","actor","util","json-scalaz","json-ext"
-  ).map{n => "net.liftweb" %% ("lift-" + n ) % "2.5-RC6"}
+  ).map{n => "net.liftweb" %% ("lift-" + n ) % "2.5"}
 
   val unfiltered = Seq(
     "filter","filter-async","agents","uploads","util","jetty","jetty-ajp","netty-server",
@@ -26,7 +26,7 @@ object build extends Build {
   val main = play.Project(
     "heroku-class-diagrams", "0.1-SNAPSHOT", Nil
   ).settings(
-    scalaVersion := "2.10.1",
+    scalaVersion := "2.10.2",
     scalacOptions ++= Seq("-Xlint"),
     cleanFiles ++= Seq(file("logs")),
     javaOptions ++= originalJvmOptions,
@@ -41,10 +41,10 @@ object build extends Build {
       Project.extract(state).currentRef.project + branch + " > "
     },
     resolvers += Opts.resolver.sonatypeReleases,
-    libraryDependencies += "org.scala-sbt" % "sbt" % "0.13.0-M2",
+    libraryDependencies += "org.scala-sbt" % "sbt" % "0.13.0-Beta2",
     libraryDependencies ++= Seq(
       "com.chuusai" %% "shapeless" % "1.2.4",
-      "com.github.seratch" %% "scalikejdbc-interpolation" % "1.6.1",
+      "com.github.seratch" %% "scalikejdbc-interpolation" % "1.6.3",
       "org.squeryl" %% "squeryl" % "0.9.6-RC1",
       "postgresql" % "postgresql" % "9.1-903.jdbc4" from "http://jdbc.postgresql.org/download/postgresql-9.1-903.jdbc4.jar",
       "mysql" % "mysql-connector-java" % "5.1.24",
