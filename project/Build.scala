@@ -41,6 +41,7 @@ object build extends Build {
       Project.extract(state).currentRef.project + branch + " > "
     },
     resolvers += Opts.resolver.sonatypeReleases,
+    resolvers += Resolver.url("typesafe", url("http://repo.typesafe.com/typesafe/releases/"))(Resolver.ivyStylePatterns),
     libraryDependencies += "org.scala-sbt" % "sbt" % "0.13.0-Beta2",
     libraryDependencies ++= Seq(
       "com.chuusai" %% "shapeless" % "1.2.4",
