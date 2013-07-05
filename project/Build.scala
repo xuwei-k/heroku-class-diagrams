@@ -8,7 +8,7 @@ object build extends Build {
 
   val lift = Seq(
     "common","json","actor","util","json-scalaz","json-ext"
-  ).map{n => "net.liftweb" %% ("lift-" + n ) % "2.5"}
+  ).map{n => "net.liftweb" %% ("lift-" + n ) % "2.5.1"}
 
   val unfiltered = Seq(
     "filter","filter-async","agents","uploads","util","jetty","jetty-ajp","netty-server",
@@ -18,10 +18,10 @@ object build extends Build {
   val scalaz = Seq(
     "core","concurrent","effect","iteratee","iterv","scalacheck-binding","typelevel"
   ).map{ m =>
-    "org.scalaz" %% ("scalaz-" + m) % "7.0.0"
+    "org.scalaz" %% ("scalaz-" + m) % "7.0.1"
   }
 
-  val spire = Seq("spire", "spire-scalacheck-binding").map("org.spire-math" %% _ % "0.4.0")
+  val spire = Seq("spire", "spire-scalacheck-binding").map("org.spire-math" %% _ % "0.5.0")
 
   val main = play.Project(
     "heroku-class-diagrams", "0.1-SNAPSHOT", Nil
@@ -42,13 +42,13 @@ object build extends Build {
     },
     resolvers += Opts.resolver.sonatypeReleases,
     resolvers += Resolver.url("typesafe", url("http://repo.typesafe.com/typesafe/releases/"))(Resolver.ivyStylePatterns),
-    libraryDependencies += "org.scala-sbt" % "sbt" % "0.13.0-Beta2",
+    libraryDependencies += "org.scala-sbt" % "sbt" % "0.13.0-RC1",
     libraryDependencies ++= Seq(
       "com.chuusai" %% "shapeless" % "1.2.4",
-      "com.github.seratch" %% "scalikejdbc-interpolation" % "1.6.3",
+      "com.github.seratch" %% "scalikejdbc-interpolation" % "1.6.4",
       "org.squeryl" %% "squeryl" % "0.9.6-RC1",
       "postgresql" % "postgresql" % "9.1-903.jdbc4" from "http://jdbc.postgresql.org/download/postgresql-9.1-903.jdbc4.jar",
-      "mysql" % "mysql-connector-java" % "5.1.24",
+      "mysql" % "mysql-connector-java" % "5.1.25",
       "net.sf.barcode4j" % "barcode4j" % "2.1",
       "org.fusesource.scalate" %% "scalate-core" % "1.6.1",
       "com.github.kmizu" %% "jsonda-json4s" % "0.8.0",
@@ -56,9 +56,9 @@ object build extends Build {
       "jmimemagic" % "jmimemagic" % "0.1.2",
       "jmagick" % "jmagick" % "6.2.4",
       "com.typesafe" %% "play-plugins-mailer" % "2.1.0",
-      "com.github.nscala-time" %% "nscala-time" % "0.2.0",
+      "com.github.nscala-time" %% "nscala-time" % "0.4.2",
       "org.scalaj" %% "scalaj-http" % "0.3.7",
-      "org.mongodb" %% "casbah-core" % "2.6.0"
+      "org.mongodb" %% "casbah-core" % "2.6.2"
     ) ++ scalaz ++ unfiltered ++ lift ++ spire,
     libraryDependencies ~= {_.map(_.copy(configurations = Some("compile")))},
     libraryDependencies ~= {_.map(_.exclude("org.eclipse.jetty.orbit", "javax.servlet"))}
