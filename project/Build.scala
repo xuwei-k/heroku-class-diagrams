@@ -16,9 +16,9 @@ object build extends Build {
   ).map{n => "net.databinder" %% ("unfiltered-" + n ) % "0.6.8"}
 
   val scalaz = Seq(
-    "core","concurrent","effect","iteratee","iterv","scalacheck-binding","typelevel"
+    "core","concurrent","effect","iteratee","scalacheck-binding","typelevel"
   ).map{ m =>
-    "org.scalaz" %% ("scalaz-" + m) % "7.0.1"
+    "org.scalaz" %% ("scalaz-" + m) % "7.1.0-M1"
   }
 
   val spire = Seq("spire", "spire-scalacheck-binding").map("org.spire-math" %% _ % "0.5.0")
@@ -45,7 +45,7 @@ object build extends Build {
     libraryDependencies += "org.scala-sbt" % "sbt" % "0.13.0-RC1",
     libraryDependencies ++= Seq(
       "com.chuusai" %% "shapeless" % "1.2.4",
-      "com.github.seratch" %% "scalikejdbc-interpolation" % "1.6.4",
+      "com.github.seratch" %% "scalikejdbc-interpolation" % "1.6.5",
       "org.squeryl" %% "squeryl" % "0.9.6-RC1",
       "postgresql" % "postgresql" % "9.1-903.jdbc4" from "http://jdbc.postgresql.org/download/postgresql-9.1-903.jdbc4.jar",
       "mysql" % "mysql-connector-java" % "5.1.25",
@@ -57,7 +57,7 @@ object build extends Build {
       "jmagick" % "jmagick" % "6.2.4",
       "com.typesafe" %% "play-plugins-mailer" % "2.1.0",
       "com.github.nscala-time" %% "nscala-time" % "0.4.2",
-      "org.scalaj" %% "scalaj-http" % "0.3.7",
+      "org.scalaj" %% "scalaj-http" % "0.3.9" exclude("junit", "junit"),
       "org.mongodb" %% "casbah-core" % "2.6.2"
     ) ++ scalaz ++ unfiltered ++ lift ++ spire,
     libraryDependencies ~= {_.map(_.copy(configurations = Some("compile")))},
