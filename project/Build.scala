@@ -40,6 +40,9 @@ object build extends Build {
       }else ""
       Project.extract(state).currentRef.project + branch + " > "
     },
+    PlayKeys.routesImport ++= Seq(
+      "scalaz.NonEmptyList", "xuwei_k.classdiagram.QueryBinders._"
+    ),
     resolvers += Opts.resolver.sonatypeReleases,
     resolvers += Resolver.url("typesafe", url("http://repo.typesafe.com/typesafe/releases/"))(Resolver.ivyStylePatterns),
     libraryDependencies += "org.scala-sbt" % "sbt" % "0.13.0-RC4",

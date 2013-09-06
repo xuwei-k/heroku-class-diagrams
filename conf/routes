@@ -1,3 +1,4 @@
+GET     /                           controllers.Application.list(classes: NonEmptyList[String])
 GET     /                           controllers.Application.index(allclass: Option[String])
 GET     /:className                 controllers.Application.diagrams(className: String, allclass: Option[String])
 

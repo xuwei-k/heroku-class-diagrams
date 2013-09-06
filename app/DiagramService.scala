@@ -26,7 +26,13 @@ object DiagramService {
    * @param classNames 作成するクラス名
    */
   def createClassDiagramByName(name: String)(classNames: String*): List[Node] = {
-    create(name, classNames.map { Class.forName(_) })
+    val classes = classNames.map{ n =>
+      try Option[Class[_]](Class.forName(n))
+      catch {
+        case _: ClassNotFoundException => None
+      }
+    }.flatten
+    create(name, classes)
   }
 
   def createClassDiagramByClass(name: String)(classes: Class[_]*): List[Node] = {
