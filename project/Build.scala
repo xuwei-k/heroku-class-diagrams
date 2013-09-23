@@ -18,7 +18,7 @@ object build extends Build {
   val scalaz = Seq(
     "core","concurrent","effect","iteratee","scalacheck-binding","typelevel"
   ).map{ m =>
-    "org.scalaz" %% ("scalaz-" + m) % "7.1.0-M2"
+    "org.scalaz" %% ("scalaz-" + m) % "7.1.0-M3"
   }
 
   val spire = Seq("spire", "spire-scalacheck-binding").map("org.spire-math" %% _ % "0.5.1")
@@ -26,7 +26,7 @@ object build extends Build {
   val main = play.Project(
     "heroku-class-diagrams", "0.1-SNAPSHOT", Nil
   ).settings(
-    scalaVersion := "2.10.2",
+    scalaVersion := "2.10.3-RC3",
     scalacOptions ++= Seq("-Xlint", "-deprecation", "-language:_", "-unchecked"),
     cleanFiles ++= Seq(file("logs")),
     javaOptions ++= originalJvmOptions,
