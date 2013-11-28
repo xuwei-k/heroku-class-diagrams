@@ -18,7 +18,7 @@ object build extends Build {
   val scalaz = Seq(
     "core","concurrent","effect","iteratee","scalacheck-binding","typelevel"
   ).map{ m =>
-    "org.scalaz" %% ("scalaz-" + m) % "7.1.0-M3"
+    "org.scalaz" %% ("scalaz-" + m) % "7.1.0-M4"
   }
 
   val spire = Seq("spire", "spire-scalacheck-binding").map("org.spire-math" %% _ % "0.6.1")
@@ -52,7 +52,7 @@ object build extends Build {
       "org.fusesource.scalate" %% "scalate-core" % "1.6.1",
       "com.github.kmizu" %% "jsonda-json4s" % "0.8.0",
       "com.github.nscala-time" %% "nscala-time" % "0.6.0",
-      "org.specs2" %% "specs2" % "2.2.2-scalaz-7.1.0-M3",
+//      "org.specs2" %% "specs2" % "2.2.2-scalaz-7.1.0-M3",
       "org.scalaj" %% "scalaj-http" % "0.3.10"
     ) ++ scalaz ++ unfiltered ++ lift ++ spire,
     libraryDependencies ~= {_.map(_.copy(configurations = Some("compile")))},
