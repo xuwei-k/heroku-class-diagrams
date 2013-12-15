@@ -8,12 +8,12 @@ object build extends Build {
 
   val lift = Seq(
     "common","json","actor","util","json-scalaz","json-ext"
-  ).map{n => "net.liftweb" %% ("lift-" + n ) % "2.5.1"}
+  ).map{n => "net.liftweb" %% ("lift-" + n ) % "2.6-M2"}
 
   val unfiltered = Seq(
     "filter","filter-async","agents","uploads","util","jetty","jetty-ajp","netty-server",
     "netty","json4s","netty-websockets","oauth","spec","scalatest","directives"
-  ).map{n => "net.databinder" %% ("unfiltered-" + n ) % "0.7.0"}
+  ).map{n => "net.databinder" %% ("unfiltered-" + n ) % "0.7.1"}
 
   val scalaz = Seq(
     "core","concurrent","effect","iteratee","scalacheck-binding","typelevel"
@@ -26,7 +26,7 @@ object build extends Build {
   val main = play.Project(
     "heroku-class-diagrams", "0.1-SNAPSHOT", Nil
   ).settings(
-    scalaVersion := "2.10.3",
+    scalaVersion := "2.10.4-RC1",
     scalacOptions ++= Seq("-Xlint", "-deprecation", "-language:_", "-unchecked"),
     cleanFiles ++= Seq(file("logs")),
     javaOptions ++= originalJvmOptions,
@@ -45,15 +45,13 @@ object build extends Build {
     libraryDependencies <+= sbtDependency,
     libraryDependencies ++= Seq(
       "com.chuusai" %% "shapeless" % "1.2.4",
-      "com.github.seratch" %% "scalikejdbc-interpolation" % "1.6.9",
-      "org.squeryl" %% "squeryl" % "0.9.6-RC1",
-      "postgresql" % "postgresql" % "9.1-903.jdbc4" from "http://jdbc.postgresql.org/download/postgresql-9.1-903.jdbc4.jar",
-      "mysql" % "mysql-connector-java" % "5.1.26",
+      "org.scalikejdbc" %% "scalikejdbc-interpolation" % "1.7.1",
+      "org.squeryl" %% "squeryl" % "0.9.6-RC2",
       "org.fusesource.scalate" %% "scalate-core" % "1.6.1",
       "com.github.kmizu" %% "jsonda-json4s" % "0.8.0",
       "com.github.nscala-time" %% "nscala-time" % "0.6.0",
 //      "org.specs2" %% "specs2" % "2.2.2-scalaz-7.1.0-M3",
-      "org.scalaj" %% "scalaj-http" % "0.3.10"
+      "org.scalaj" %% "scalaj-http" % "0.3.12"
     ) ++ scalaz ++ unfiltered ++ lift ++ spire,
     libraryDependencies ~= {_.map(_.copy(configurations = Some("compile")))},
     libraryDependencies ~= {_.map(_.exclude("org.eclipse.jetty.orbit", "javax.servlet"))}
