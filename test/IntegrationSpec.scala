@@ -9,7 +9,7 @@ class IntegrationSpec extends Specification {
 
   "Application" should {
 
-    "work from within a browser" in new WithBrowser(webDriver = classOf[ChromeDriver]){
+    "work from within a browser" in new WithBrowser(new ChromeDriver){
 
       browser.goTo("/")
 
