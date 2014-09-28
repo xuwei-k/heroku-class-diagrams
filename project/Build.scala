@@ -1,4 +1,5 @@
 import sbt._,Keys._
+import com.heroku.sbt.HerokuPlugin
 
 object build extends Build {
 
@@ -21,8 +22,9 @@ object build extends Build {
 
   val main = Project(
     "heroku-class-diagrams", file(".")
-  ).enablePlugins(play.PlayScala).settings(
+  ).enablePlugins(play.PlayScala).enablePlugins(HerokuPlugin).settings(
     scalaVersion := "2.10.4",
+    HerokuPlugin.autoImport.herokuAppName in Compile := "class-diagrams",
     scalacOptions ++= Seq("-Xlint", "-deprecation", "-language:_", "-unchecked"),
     cleanFiles ++= Seq(file("logs")),
     javaOptions ++= originalJvmOptions,
