@@ -1,12 +1,12 @@
 package controllers
 
-import play.api._
 import play.api.mvc._
 import xuwei_k.classDiagram
 import xuwei_k.classDiagram.SVG
 import xuwei_k.classDiagram.Front._
+import javax.inject.Inject
 
-object Application extends Controller {
+class Application @Inject() (cc: ControllerComponents) extends AbstractController(cc) {
 
   def index(allclass: Option[String]) = Action{
     Ok(template(printClassList("",allclass.isDefined),"class diagrams")).as(HTML)

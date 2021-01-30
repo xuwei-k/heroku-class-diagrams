@@ -1,19 +1,18 @@
 package test
 
-import org.specs2.mutable._
-
-import play.api.test._
+import org.scalatestplus.play.PlaySpec
 import play.api.test.Helpers._
+import org.scalatestplus.play.guice.GuiceOneServerPerTest
+import play.api.libs.ws.WSClient
 
-class ApplicationSpec extends Specification {
+class ApplicationSpec extends PlaySpec with GuiceOneServerPerTest {
 
   "Application" should {
-
-    "render the index page" in new WithApplication(){
-      val home = route(FakeRequest(GET, "/")).get
-
-      status(home) must equalTo(OK)
-      contentType(home) must beSome.which(_ == "text/html")
+    "test server logic" in {
+      val ws = app.injector.instanceOf[WSClient]
+      val address = s"http://localhost:$port"
+      val response = await(ws.url(address).get())
+      assert(response.status === OK)
     }
   }
 }
